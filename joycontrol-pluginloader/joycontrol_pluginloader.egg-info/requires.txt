@@ -1,0 +1,4 @@
+aioconsole
+crc8
+dbus-python
+hid

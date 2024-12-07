@@ -1,0 +1,3 @@
+[console_scripts]
+joycontrol-pluginloader = JoycontrolPlugin.loader:main
+

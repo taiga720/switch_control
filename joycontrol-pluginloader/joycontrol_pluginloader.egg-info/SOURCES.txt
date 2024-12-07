@@ -1,0 +1,13 @@
+LICENSE
+README.md
+setup.py
+JoycontrolPlugin/__init__.py
+JoycontrolPlugin/commands.py
+JoycontrolPlugin/loader.py
+JoycontrolPlugin/plugin.py
+joycontrol_pluginloader.egg-info/PKG-INFO
+joycontrol_pluginloader.egg-info/SOURCES.txt
+joycontrol_pluginloader.egg-info/dependency_links.txt
+joycontrol_pluginloader.egg-info/entry_points.txt
+joycontrol_pluginloader.egg-info/requires.txt
+joycontrol_pluginloader.egg-info/top_level.txt
