@@ -5,12 +5,32 @@
 python3 test/hello.py
 ```
 
-## SSH
-sudo apt install openssh-server
+## 実行
+ペアリングと自動入力が実行される
+```
+sudo joycontrol-pluginloader -r 94:58:CB:64:5C:56 ../app/dragonquest3/RepeatXA.py
+```
 
-https://qiita.com/010Ri/items/0a09356633655b5613ee
+## ペアリング
+```
+sudo joycontrol-pluginloader plugins/tests/PairingController.py
+```
 
-鍵を生成する
+## ゲームに戻る
+不要
+```
+sudo joycontrol-pluginloader -r 94:58:CB:64:5C:56 switch_control/app/returnGame.py
+```
 
-authorized_keysを作成
-ウィンドウズからコピー
+## 接続できない場合
+
+### 登録情報の削除
+```
+bluetoothctl paired-devices
+bluetoothctl remove XX:XX:XX:XX:XX:XX
+```
+
+### 「KeyError: 'Name'」というエラー
+```
+sudo systemctl restart bluetooth.service
+```
