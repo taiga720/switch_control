@@ -1,5 +1,6 @@
 import logging
 from JoycontrolPlugin import JoycontrolPlugin
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -7,26 +8,34 @@ class RepeatXA(JoycontrolPlugin):
     async def run(self):
         logger.info('Repeat X A Plugin')
 
+        start = 0 # xボタン押下後計測開始時間
+        end = 30   # xボタン押下後経過時間
         while True:
-            await self.button_push('x')
-            logger.info('Repeat X Plugin')
-            await self.wait(0.5)
-            await self.button_push('a')
-            logger.info('Repeat A1 Plugin')
-            await self.wait(0.5)
-            await self.button_push('a')
-            logger.info('Repeat A2 Plugin')
-            await self.wait(0.5)
-            await self.button_push('a')
-            logger.info('Repeat A3 Plugin')
-            await self.wait(0.5)
-            await self.button_push('a')
-            logger.info('Repeat A4 Plugin')
-            logger.info('Wait 10 Sec ...')
-            await self.wait(10)
-            await self.button_push('a')
-            logger.info('Repeat A5 Plugin')
-            await self.wait(0.5)
-            await self.button_push('a')
-            logger.info('Repeat A6 Plugin')
-            await self.wait(0.5)
+            # xボタン長押し後30秒はxとaボタン連打
+            # → たまに逃げるループから抜けるため
+            if end - start >= 30 :
+
+                # 逃げるためxボタン長押し
+                logger.info('Push X Button')
+                await self.button_press('x')
+                await self.wait(5)
+                await self.button_release('x')
+
+                # xボタン押下後計測開始時間
+                start = time.perf_counter()
+
+            else:
+                await self.button_push('x')
+                logger.info('Push X Button')
+                await self.wait(0.3)
+
+                await self.button_push('a')
+                logger.info('Push A Button')
+                await self.wait(0.3)
+
+                await self.button_push('a')
+                logger.info('Push A Button')
+                await self.wait(0.3)
+
+                # xボタン押下後経過時間
+                end = time.perf_counter()
