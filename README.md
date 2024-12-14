@@ -8,7 +8,13 @@ python3 test/hello.py
 ## 実行
 ペアリングと自動入力が実行される
 ```
-sudo joycontrol-pluginloader -r 94:58:CB:64:5C:56 ../app/dragonquest3/RepeatXA.py
+cd switch_control/joycontrol
+sudo python3 run_controller_cli.py PRO_CONTROLLER -r 94:58:CB:64:5C:56 
+```
+
+```
+cd
+sudo joycontrol-pluginloader -r 94:58:CB:64:5C:56 switch_control//app/dragonquest3/RepeatXA.py
 ```
 
 ## ペアリング
