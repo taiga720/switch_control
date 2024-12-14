@@ -13,26 +13,18 @@ class RepeatXA(JoycontrolPlugin):
         while True:
             # xボタン長押し後30秒はxとaボタン連打
             # → たまに逃げるループから抜けるため
-            if end - start >= 30 :
+            if end - start >= 20 :
 
                 # 逃げるためxボタン長押し
                 logger.info('Push X Button')
                 await self.button_press('x')
-                await self.wait(5)
+                await self.wait(3)
                 await self.button_release('x')
 
                 # xボタン押下後計測開始時間
                 start = time.perf_counter()
 
             else:
-                await self.button_push('x')
-                logger.info('Push X Button')
-                await self.wait(0.3)
-
-                await self.button_push('a')
-                logger.info('Push A Button')
-                await self.wait(0.3)
-
                 await self.button_push('a')
                 logger.info('Push A Button')
                 await self.wait(0.3)
